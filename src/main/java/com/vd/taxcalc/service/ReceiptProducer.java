@@ -19,13 +19,10 @@ public class ReceiptProducer {
 		Optional<Receipt> finalReceipt = stream
 				.map(BasketEntry::parseEntry)
 				.map(Receipt::buildReceipt)
-				.reduce(Receipt::acculumulate);
+				.reduce(Receipt::accumulate);
 
-		if (finalReceipt.isPresent()) {
-			Receipt receipt = finalReceipt.get();
-			return receipt.toString();
-		}
-		throw new InvalidEntryException();
+		Receipt receipt = finalReceipt.orElseThrow(InvalidEntryException::new);
+		return receipt.toString();
 	}
 }
  

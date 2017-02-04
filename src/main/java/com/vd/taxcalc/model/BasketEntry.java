@@ -7,6 +7,8 @@ public class BasketEntry {
     private String productText;
     private BigDecimal price;
 
+    private BasketEntry() {}
+    
     public String getProductText() {
         return productText;
     }

@@ -15,7 +15,9 @@ public class Receipt {
     private BigDecimal totalAmount = BigDecimal.ZERO;
     private List<String> itemList = new ArrayList<>();
 
-    public Receipt acculumulate(Receipt otherEntry) {
+    private Receipt() {}
+    
+    public Receipt accumulate(Receipt otherEntry) {
         salesTaxes = salesTaxes.add(otherEntry.salesTaxes);
         totalAmount = totalAmount.add(otherEntry.totalAmount);
         itemList.addAll(otherEntry.itemList);
